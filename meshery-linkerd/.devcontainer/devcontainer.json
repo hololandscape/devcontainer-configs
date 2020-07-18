@@ -1,6 +1,6 @@
 {
 	"name": "Meshery-linkerd",
-	"image": "aisuko/golang:v1.14",
+	"image": "aisuko/red-thirteen:v1.14",
 	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -31,5 +31,9 @@
 	},
 	
 	"workspaceMount":"source=/root/code/meshery-linkerd,target=/workspace,type=bind,consistency=delegated",
-	"workspaceFolder": "/workspace"
+	"workspaceFolder": "/workspace",
+
+	"mounts":[
+		"source=/root/code/infrastructure-configurations/RKE/k8sdaemon-local/kube_config_cluster.yml,target=/workspace/config.yml,type=bind"
+	]
 }
