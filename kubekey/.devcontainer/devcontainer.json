@@ -1,6 +1,6 @@
 {
-	"name": "MesheryInfra",
-	"image": "aisuko/red-thirteen:v0.1.0",
+	"name": "KubeKey",
+	"image": "aisuko/rufus:v0.1.0",
 	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -29,14 +29,9 @@
 	// "remoteUser": "vscode",
 	"remoteEnv": {
 		"GOPROXY":"https://goproxy.io,direct",
-		"GO111MODULE":"on",
-		"SYNC_LOCALHOST_KUBECONFIG": "true"
+		"GO111MODULE":"on"
 	},
 	
-	"workspaceMount":"source=/root/code/meshinfra,target=/workspace,type=bind,consistency=delegated",
+	"workspaceMount":"source=/root/code/kubekey,target=/workspace,type=bind,consistency=delegated",
 	"workspaceFolder": "/workspace",
-
-	"mounts":[
-		"source=/root/code/infrastructure-configurations/RKE/k8sdaemon-local/kube_config_cluster.yml,target=/workspace/config.yml,type=bind"
-	]
 }
